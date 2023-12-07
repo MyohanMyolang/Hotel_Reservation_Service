@@ -115,12 +115,12 @@ class Room {
         val diff = DateUtil.getDiffFromCurDate(roomResInfo.checkIn);
 
         val per = when{
-            diff <= 3 -> 0;
-            diff <= 5 -> 30;
-            diff <= 7 -> 50;
-            diff <= 14 -> 80;
             diff >= 30 -> 100;
-            else -> 90;
+            diff >= 14 -> 80;
+            diff >= 7 -> 50;
+            diff >= 5 -> 30;
+            diff >= 3 -> 0;
+            else -> 0;
         }
 
         roomResInfo.user.money += roomResInfo.resPrice * per / 100;
